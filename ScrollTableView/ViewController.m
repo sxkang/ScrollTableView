@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "ScrollTableBaseViewController.h"
+
+
 
 @interface ViewController ()
 
@@ -16,7 +19,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    UIButton *tempBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    tempBtn.frame = CGRectMake(100, 100, 100, 100);
+    tempBtn.backgroundColor = [UIColor orangeColor];
+    
+    [tempBtn setTitle:@"点击" forState:UIControlStateNormal];
+    
+    [tempBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:tempBtn];
+    
+}
+
+
+- (void)clickBtn {
+    
+    ScrollTableBaseViewController *scrollTableVC = [[ScrollTableBaseViewController alloc] init];
+    
+    UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:scrollTableVC];
+    [self presentViewController:navi animated:YES completion:nil];
 }
 
 
